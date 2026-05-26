@@ -10,7 +10,7 @@
         </feature>
     </div>
 </section>
-<p class="text-muted small">Browsing @Model.TotalCatalogItems products</p>
+<p class="text-muted small">Browsing @Model.TotalCatalogItems product@(Model.TotalCatalogItems == 1 ? "" : "s")</p>
 <section class="esh-catalog-filters">
     <div class="container">
         <form method="get">
