@@ -8,6 +8,11 @@ updates:
     labels:
       - "dependencies"
       - "nuget"
+    # Skip major version bumps - they almost always contain breaking API
+    # changes that fail the build (e.g. MediatR 12->14, Swashbuckle 7->10).
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
     groups:
       microsoft:
         patterns:
