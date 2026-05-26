@@ -20,19 +20,20 @@
     &-badge {
         $size: 1.5rem;
         background-color: $color-warning;
-        border-radius: 50%;
+        border-radius: calc($size / 2);
         color: $color-foreground-brighter;
         display: block;
         font-size: $font-size-xs;
         height: $size;
         left: 50%;
         line-height: $size;
+        min-width: $size;
+        padding: 0 .35rem;
         position: absolute;
         text-align: center;
         top: 0;
         transform: translateX(-38%);
         transition: all $animation-speed-default;
-        width: $size;
     }
 
     &-badge-inoperative {

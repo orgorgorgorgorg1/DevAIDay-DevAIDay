@@ -12,19 +12,20 @@
     margin-top: .5rem; }
   .esh-basketstatus-badge {
     background-color: #ff0000;
-    border-radius: 50%;
+    border-radius: 0.75rem;
     color: #FFFFFF;
     display: block;
     font-size: 0.65rem;
     height: 1.5rem;
     left: 50%;
     line-height: 1.5rem;
+    min-width: 1.5rem;
+    padding: 0 0.35rem;
     position: absolute;
     text-align: center;
     top: 0;
     transform: translateX(-38%);
-    transition: all 0.35s;
-    width: 1.5rem; }
+    transition: all 0.35s; }
   .esh-basketstatus-badge-inoperative {
     background-color: #ff0000;
     border-radius: 50%;
