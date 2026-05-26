@@ -5,21 +5,24 @@ namespace Microsoft.eShopWeb.UnitTests.Web.ViewModels.BasketComponentViewModelTe
 
 public class DisplayItemsCount
 {
-    [Fact]
-    public void ReturnsItemsCountWhenValueIsLessThan100()
+    [Theory]
+    [InlineData(0, "0")]
+    [InlineData(42, "42")]
+    [InlineData(99, "99")]
+    public void ReturnsItemsCountWhenValueIsLessThan100(int itemsCount, string expectedDisplayCount)
     {
         var viewModel = new BasketComponentViewModel
         {
-            ItemsCount = 42
+            ItemsCount = itemsCount
         };
 
         var result = viewModel.DisplayItemsCount;
 
-        Assert.Equal("42", result);
+        Assert.Equal(expectedDisplayCount, result);
     }
 
     [Fact]
-    public void Returns99PlusWhenValueIsGreaterThan99()
+    public void Returns99PlusWhenValueIsAtLeast100()
     {
         var viewModel = new BasketComponentViewModel
         {
