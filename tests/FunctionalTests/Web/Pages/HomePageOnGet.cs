@@ -25,6 +25,7 @@ public class HomePageOnGet : IClassFixture<TestApplication>
 
         // Assert
         Assert.Contains("Sale &mdash; 50% korting this week", stringResponse);
+        Assert.Contains("Browsing 12 products", stringResponse);
         Assert.Contains(".NET Bot Black Sweatshirt", stringResponse);
     }
 }

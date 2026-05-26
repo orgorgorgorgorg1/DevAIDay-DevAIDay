@@ -9,6 +9,7 @@ public class IndexModel : PageModel
 {
     private readonly ICatalogViewModelService _catalogViewModelService;
     public SettingsViewModel SettingsModel { get; }
+    public int TotalCatalogItems { get; private set; }
 
     public IndexModel(ICatalogViewModelService catalogViewModelService, IOptionsSnapshot<SettingsViewModel> options)
     {
@@ -21,5 +22,6 @@ public class IndexModel : PageModel
     public async Task OnGet(CatalogIndexViewModel catalogModel, int? pageId)
     {
         CatalogModel = await _catalogViewModelService.GetCatalogItems(pageId ?? 0, Constants.ITEMS_PER_PAGE, catalogModel.BrandFilterApplied, catalogModel.TypesFilterApplied);
+        TotalCatalogItems = CatalogModel.PaginationInfo?.TotalItems ?? 0;
     }
 }
