@@ -1,0 +1,27 @@
+name: Legacy Pipeline (demo)
+
+# DevAI Day demo workflow with deliberately outdated action versions
+# so Dependabot's `github-actions` ecosystem opens update PRs.
+# Disabled by default - no triggers.
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - uses: actions/cache@v2
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ hashFiles('**/*.csproj') }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: placeholder
+          path: README.md

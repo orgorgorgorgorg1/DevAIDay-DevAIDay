@@ -1,0 +1,7 @@
+# DevAI Day demo: outdated base image with known CVEs.
+# Not wired into docker-compose; here so Dependabot's docker ecosystem
+# surfaces a base-image update PR.
+FROM mcr.microsoft.com/dotnet/aspnet:6.0
+WORKDIR /app
+COPY . .
+ENTRYPOINT ["dotnet", "Web.dll"]
