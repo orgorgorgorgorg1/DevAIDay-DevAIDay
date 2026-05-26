@@ -19,12 +19,14 @@
 
     &-badge {
         $size: 1.5rem;
-        background-color: $color-secondary;
+        background-color: $color-warning;
         border-radius: 50%;
         color: $color-foreground-brighter;
         display: block;
+        font-size: $font-size-xs;
         height: $size;
         left: 50%;
+        line-height: $size;
         position: absolute;
         text-align: center;
         top: 0;
@@ -51,7 +53,7 @@
 
     &:hover &-badge {
         background-color: transparent;
-        color: $color-secondary-dark;
+        color: $color-warning-dark;
         transition: all $animation-speed-default;
     }
 }
