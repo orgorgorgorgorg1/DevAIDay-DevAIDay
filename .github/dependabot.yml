@@ -1,49 +1,38 @@
 version: 2
+# Trimmed config for the DevAI Day demo: minimal noise, just enough to
+# showcase Dependabot security updates.
+#
+# NOTE on ignore rules: blocking all routine version-update PRs (major/minor/
+# patch) effectively limits Dependabot to SECURITY update PRs only. Security
+# updates are NOT affected by `ignore` rules, so the demo CVE alerts still
+# get auto-fix PRs.
 updates:
   - package-ecosystem: "nuget"
     directory: "/"
     schedule:
-      interval: "daily"
-    open-pull-requests-limit: 10
+      interval: "weekly"
+    open-pull-requests-limit: 2
     labels:
       - "dependencies"
       - "nuget"
-    # Skip major version bumps - they almost always contain breaking API
-    # changes that fail the build (e.g. MediatR 12->14, Swashbuckle 7->10).
     ignore:
       - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
-    groups:
-      microsoft:
-        patterns:
-          - "Microsoft.*"
-          - "System.*"
-      test-dependencies:
-        patterns:
-          - "*Test*"
-          - "Moq"
-          - "xunit*"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+          - "version-update:semver-patch"
 
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: "npm"
+    directory: "/demo/legacy-web"
     schedule:
       interval: "weekly"
+    open-pull-requests-limit: 1
     labels:
       - "dependencies"
-      - "github-actions"
-
-  - package-ecosystem: "docker"
-    directory: "/src/Web"
-    schedule:
-      interval: "weekly"
-    labels:
-      - "dependencies"
-      - "docker"
-
-  - package-ecosystem: "docker"
-    directory: "/src/PublicApi"
-    schedule:
-      interval: "weekly"
-    labels:
-      - "dependencies"
-      - "docker"
+      - "npm"
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+          - "version-update:semver-patch"
