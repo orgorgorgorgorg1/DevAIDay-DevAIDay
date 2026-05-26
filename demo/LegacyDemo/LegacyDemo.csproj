@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    DevAI Day demo project.
+    Intentionally pinned to OUTDATED package versions with public advisories so
+    Dependabot/CodeQL can showcase the ADO -> GitHub security story.
+    NOT referenced from eShopOnWeb.sln, so it does not affect the main build.
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+    <IsPackable>false</IsPackable>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Newtonsoft.Json < 13.0.1 : GHSA-5crp-9r3c-p9vr (DoS via deeply nested data) -->
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+
+    <!-- System.Net.Http 4.3.0 : CVE-2018-8292 (information disclosure) -->
+    <PackageReference Include="System.Net.Http" Version="4.3.0" />
+
+    <!-- System.Text.RegularExpressions 4.3.0 : CVE-2019-0820 (ReDoS) -->
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.0" />
+
+    <!-- System.Text.Encodings.Web < 4.5.1 : CVE-2021-26701 -->
+    <PackageReference Include="System.Text.Encodings.Web" Version="4.5.0" />
+
+    <!-- Azure.Identity < 1.11.4 : CVE-2024-35255 (elevation of privilege) -->
+    <PackageReference Include="Azure.Identity" Version="1.7.0" />
+
+    <!-- Microsoft.Data.SqlClient < 5.1.3 : CVE-2024-0056 -->
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="2.0.0" />
+
+    <!-- System.Drawing.Common 4.7.0 : CVE-2021-24112 (RCE) -->
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+
+    <!-- MySql.Data older versions: multiple CVEs -->
+    <PackageReference Include="MySql.Data" Version="8.0.20" />
+  </ItemGroup>
+
+</Project>
