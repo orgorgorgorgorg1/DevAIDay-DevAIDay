@@ -24,6 +24,7 @@ public class HomePageOnGet : IClassFixture<TestApplication>
         var stringResponse = await response.Content.ReadAsStringAsync();
 
         // Assert
+        Assert.Contains("Sale &mdash; 50% korting this week", stringResponse);
         Assert.Contains(".NET Bot Black Sweatshirt", stringResponse);
     }
 }
