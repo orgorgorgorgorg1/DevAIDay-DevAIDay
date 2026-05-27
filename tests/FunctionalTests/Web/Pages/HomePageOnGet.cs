@@ -1,4 +1,5 @@
 ﻿using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.eShopWeb.FunctionalTests.Web;
 using Xunit;
@@ -25,7 +26,11 @@ public class HomePageOnGet : IClassFixture<TestApplication>
 
         // Assert
         Assert.Contains("Sale &mdash; 50% korting this week", stringResponse);
+        Assert.Contains("Featured products", stringResponse);
         Assert.Contains("Browsing 12 products", stringResponse);
         Assert.Contains(".NET Bot Black Sweatshirt", stringResponse);
+        Assert.Contains(".NET Black &amp; White Mug", stringResponse);
+        Assert.Contains("Prism White T-Shirt", stringResponse);
+        Assert.Equal(3, Regex.Matches(stringResponse, "Shop now").Count);
     }
 }
