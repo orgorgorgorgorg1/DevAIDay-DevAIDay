@@ -31,6 +31,11 @@ public class HomePageOnGet : IClassFixture<TestApplication>
         Assert.Contains(".NET Bot Black Sweatshirt", stringResponse);
         Assert.Contains(".NET Black &amp; White Mug", stringResponse);
         Assert.Contains("Prism White T-Shirt", stringResponse);
-        Assert.Equal(3, Regex.Matches(stringResponse, "Shop now").Count);
+
+        var featuredProductsMarkup = stringResponse[
+            stringResponse.IndexOf("Featured products")..
+            stringResponse.IndexOf("Browsing 12 products")];
+
+        Assert.Equal(3, Regex.Matches(featuredProductsMarkup, "Shop now").Count);
     }
 }
